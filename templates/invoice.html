@@ -1,0 +1,93 @@
+{% load static from staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Log in</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link href="{% static "css/css-table.css" %}" rel="stylesheet">
+<script src="{% static "js/jquery-1.2.6.min.js" %}"></script>
+<script src="{% static "js/style-table.js" %}"></script>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="fl"><a href="/logout/">Logout</a></td>
+        </tr>
+    </table>
+    <div>
+    	<form class="form-horizontal" name="Form" action="/invoice_save/" method="post">
+            {% csrf_token %}
+            <div class="invoice">
+                <table>
+                    <tr>
+                        <td colspan="9">Invoice</td>
+                    </tr>
+                    <tr>
+                        <td>Invoice no:</td>
+                        <td><input type="text" name="invoice_id"></td>
+                        <td>Booking id</td>
+                        <td><input type="text" name="booking_id" value="{{ process.booking_id }}" disabled</td>
+                        <td>Booking date:</td>
+                        <td><input type="text" name="booking_date"></td>
+                        <td>Service tax:</td>
+                        <td><input type="text" name="service_tax"></td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td><input type="text" name="date"></td>
+                        <td>Package id</td>
+                        <td><input type="text" name="package_id"></td>
+                        <td>Package date:</td>
+                        <td><input type="text" name="package_date"></td>
+                        <td>Pan no:</td>
+                        <td><input type="text" name="pan_no"></td>
+                    </tr>
+                    <tr>
+                        <td>Invoice to:</td>
+                        <td colspan="4"><textarea rows="1" cols="50" name="invoice_to"></textarea></td>
+                        <td> Address:</td>
+                        <td colspan="4"><textarea rows="3" cols="50" name="address"></textarea></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>NO.of Pax</td>
+                        <td>Package Details</td>
+                        <td>Rate</td>
+                        <td>Amount in INR</td>
+                    </tr>
+                    <tr>
+                        <td><textarea rows="25" cols="10" name="pax"></textarea></td>
+                        <td><textarea rows="25" cols="25" name="details"></textarea></td>
+                        <td><textarea rows="25" cols="10" name="rate"></textarea></td>
+                        <td><textarea rows="25" cols="10" name="amount"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" rowspan="4"></td>
+                        <td>Total value</td>
+                        <td><input type="text" name="total">
+                    </tr>
+                    <tr>
+                        <td>Service Charge</td>
+                        <td><input type="text" name="service_charge"></td>
+                    </tr>
+                    <tr>
+                        <td>Service Tax</td>
+                        <td><input type="text" name="service_tax">
+                    </tr>
+                    <tr> 
+                        <td>Total invoice value</td>
+                        <td><input type="text" name="total_value">
+                    </tr>
+                </table>
+                <table>
+                <tr>
+                <td><input type="submit" value="print" onClick="window.print()"></td>
+                </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static from staticfiles %}
+<html>
+<head>
+<title>Log in</title>
+<link href="{% static "css/css-table.css" %}" rel="stylesheet">
+<script src="{% static "js/jquery-1.2.6.min.js" %}"></script>
+<script src="{% static "js/style-table.js" %}"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="fl"><a href="/logout/">Logout</a></td>
+        </tr>
+    </table>
+    <table id="travel">
+        <tr>
+            <th>Booking id</th>
+            <th>Package name</th>
+            <th>Cost</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Date of Departure</th>
+            <th>No of Days</th>
+            <th>Adult</th>
+            <th>Child</th>
+            <th>Infant</th>
+            <th>Accommodation</th>
+            <th>Accommodation Type</th>
+            <th>Meal plan</th>
+            <th>Payment</th>
+            <th>Notes</th>
+            <th>View</th>
+        </tr>
+        {% for vendors in vendor %}
+        <tr>
+            <td>{{ vendors.booking_id }}</td>
+            <td>{{ vendors.package_name }}</td>
+            <td>{{ vendors.cost }}</td>
+            <td>{{ vendors.address }}</td>
+            <td>{{ vendors.mobile }}</td>
+            <td>{{ vendors.email }}</td>
+            <td>{{ vendors.date_of_departure }}</td>
+            <td>{{ vendors.no_of_days }}</td>
+            <td>{{ vendors.adult }}</td>
+            <td>{{ vendors.child }}</td>
+            <td>{{ vendors.infant }}</td>
+            <td>{{ vendors.accommodation }}</td>
+            <td>{{ vendors.accommodation_type }}</td>
+            <td>{{ vendors.meal_plan_dropdown }}</td>
+            <td>{{ vendors.payment }}</td>
+            <td>{{ vendors.notes }}</td>
+
+            <td><a href="/list_detail/{{ vendors.booking_id }}"> View</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
